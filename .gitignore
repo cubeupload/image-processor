@@ -2,7 +2,7 @@
 .env.*.php
 .env.php
 .env
-
+/vendor/
 # =========================
 # Operating System Files
 # =========================
@@ -53,3 +53,4 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+.vscode/launch.json
