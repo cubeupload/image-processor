@@ -6,7 +6,7 @@
     {
         private $fileInfo;
         private $handler;
-        
+
         public function load($path)
         {
             if( file_exists( $path ) )
@@ -20,8 +20,40 @@
         
         private function loadHandler()
         {
-            $extn = $this->fileInfo->getExtension();
-            $class = "CubeUpload\\Handlers\\" . ucfirst( $extn ) . "ImageHandler";
+            $extn = strtolower( $this->fileInfo->getExtension() );
+            $class = "";
+
+            switch( $extn )
+            {
+                case "jpg":
+                case "jpeg":
+                    $class = 'CubeUpload\Handlers\JpgImagehandler';
+                break;
+
+                case 'png':
+                    $class = 'CubeUpload\Handlers\PngImageHandler';
+                break;
+
+                case 'bmp':
+                    $class = 'CubeUpload\Handlers\BmpImageHandler';
+                break;
+
+                case 'gif':
+                    $class = 'CubeUpload\Handlers\GifImageHandler';
+                break;
+
+                case 'pdf':
+                    $class = 'CubeUpload\Handlers\PdfImageHandler';
+                break;
+
+                case 'tif':
+                    $class = 'CubeUpload\Handlers\TifImageHandler';
+                break;
+
+                default:
+                    throw new \Exception( "File extension {$extn} not supported");
+                break;
+            }
 
             if( class_exists($class))
             {
