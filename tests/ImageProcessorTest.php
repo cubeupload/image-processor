@@ -75,4 +75,12 @@
 
             $this->assertInstanceOf( CubeUpload\Handlers\TifImageHandler::class, $p->getHandler());
         }
+
+        public function testValid()
+        {
+            $p = new ImageProcessor;
+            $p->load( $this->png64x48 );
+
+            $this->assertTrue( $p->isValid() );
+        }
     }

@@ -58,7 +58,6 @@
             if( class_exists($class))
             {
                 $this->handler = new $class();
-                $this->handler->open( $this->fileInfo->getPathname() );
             }
             else
                 throw new \Exception( "Image handler class " . $class . " not found");
@@ -82,5 +81,13 @@
         public function getMagicBytes()
         {
             return $this->handler->getMagicBytes();
+        }
+
+        public function isValid()
+        {
+            $this->handler->open( $this->fileInfo->getPathname() );
+            $valid = $this->handler->valid();
+            $this->handler->close(); 
+            return $valid;
         }
     }
