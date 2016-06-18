@@ -1,5 +1,5 @@
 {
-    "name": "cubeupload/imageprocessor",
+    "name": "cubeupload/image-processor",
     "description": "Receives, checks and processes uploaded images for later deployment",
     "version": "0.1",
     "require-dev": {
