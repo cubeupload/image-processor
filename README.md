@@ -12,7 +12,7 @@ When we receive uploaded images, we need to make sure that someone's image named
 $processor = new CubeUpload\ImageProcessor;
 $processor->load( "image.png" );
 
-if( $processor->validFile() )
+if( $processor->isValid() )
   sendToStore( $processor->getSplFileInfo()->getPathname() );
 else
   unlink( $processor->getSplFileInfo()->getPathname() );
