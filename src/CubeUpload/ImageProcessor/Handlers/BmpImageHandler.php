@@ -1,4 +1,4 @@
-<?php namespace CubeUpload\Handlers;
+<?php namespace CubeUpload\ImageProcessor\Handlers;
 
 class BmpImageHandler extends ImageHandler implements IImageHandler
 {

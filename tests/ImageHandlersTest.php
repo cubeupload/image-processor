@@ -2,7 +2,7 @@
     
     use PHPUnit\Framework\TestCase;
     
-    use CubeUpload\ImageProcessor;
+    use CubeUpload\ImageProcessor\ImageProcessor;
     
     class ImageHandlersTest extends TestCase
     {        

@@ -1,4 +1,4 @@
-<?php namespace CubeUpload;
+<?php namespace CubeUpload\ImageProcessor;
 
     use \SplFileInfo;
 
@@ -8,13 +8,13 @@
         private $handler;
 
         public static $handlers = [
-            'jpg'   => 'CubeUpload\Handlers\JpgImageHandler',
-            'jpeg'  => 'CubeUpload\Handlers\JpgImageHandler',
-            'png'   => 'CubeUpload\Handlers\PngImageHandler',
-            'gif'   => 'CubeUpload\Handlers\GifImageHandler',
-            'bmp'   => 'CubeUpload\Handlers\BmpImageHandler',
-            'tif'   => 'CubeUpload\Handlers\TifImageHandler',
-            'pdf'   => 'CubeUpload\Handlers\PdfImageHandler'
+            'jpg'   => 'CubeUpload\ImageProcessor\Handlers\JpgImageHandler',
+            'jpeg'  => 'CubeUpload\ImageProcessor\Handlers\JpgImageHandler',
+            'png'   => 'CubeUpload\ImageProcessor\Handlers\PngImageHandler',
+            'gif'   => 'CubeUpload\ImageProcessor\Handlers\GifImageHandler',
+            'bmp'   => 'CubeUpload\ImageProcessor\Handlers\BmpImageHandler',
+            'tif'   => 'CubeUpload\ImageProcessor\Handlers\TifImageHandler',
+            'pdf'   => 'CubeUpload\ImageProcessor\Handlers\PdfImageHandler'
         ]; 
 
         public function load($path)
