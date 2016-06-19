@@ -83,4 +83,13 @@
 
             $this->assertTrue( $p->isValid() );
         }
+
+        public function testJpgProcessing()
+        {
+            $p = new ImageProcessor;
+            $p->load( $this->jpg64x48 );
+
+            if( $p->isValid() )
+                $p->process();
+        }
     }

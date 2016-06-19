@@ -73,6 +73,7 @@
 
         public function process()
         {
-
+            if( $this->handler->canProcess() )
+                $this->handler->process();
         }
     }
