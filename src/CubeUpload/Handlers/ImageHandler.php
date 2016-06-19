@@ -19,4 +19,14 @@ class ImageHandler
     {
         fclose( $this->handle );
     }
+
+    public function canProcess()
+    {
+        $class = get_class( $this );
+
+        if( in_array( "process", get_class_methods( $class )) )
+            return true;
+        else
+            return false;
+    }
 }

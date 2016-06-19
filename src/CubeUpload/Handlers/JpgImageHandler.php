@@ -21,4 +21,9 @@ class JpgImageHandler extends ImageHandler implements IImageHandler
         else
             return false;
     }
+
+    public function process()
+    {
+        
+    }
 }

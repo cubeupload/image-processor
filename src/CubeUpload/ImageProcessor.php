@@ -7,6 +7,16 @@
         private $fileInfo;
         private $handler;
 
+        public static $handlers = [
+            'jpg'   => 'CubeUpload\Handlers\JpgImageHandler',
+            'jpeg'  => 'CubeUpload\Handlers\JpgImageHandler',
+            'png'   => 'CubeUpload\Handlers\PngImageHandler',
+            'gif'   => 'CubeUpload\Handlers\GifImageHandler',
+            'bmp'   => 'CubeUpload\Handlers\BmpImageHandler',
+            'tif'   => 'CubeUpload\Handlers\TifImageHandler',
+            'pdf'   => 'CubeUpload\Handlers\PdfImageHandler'
+        ]; 
+
         public function load($path)
         {
             if( file_exists( $path ) )
@@ -23,44 +33,14 @@
             $extn = strtolower( $this->fileInfo->getExtension() );
             $class = "";
 
-            switch( $extn )
+            if( array_key_exists( $extn, self::$handlers) )
             {
-                case "jpg":
-                case "jpeg":
-                    $class = 'CubeUpload\Handlers\JpgImagehandler';
-                break;
-
-                case 'png':
-                    $class = 'CubeUpload\Handlers\PngImageHandler';
-                break;
-
-                case 'bmp':
-                    $class = 'CubeUpload\Handlers\BmpImageHandler';
-                break;
-
-                case 'gif':
-                    $class = 'CubeUpload\Handlers\GifImageHandler';
-                break;
-
-                case 'pdf':
-                    $class = 'CubeUpload\Handlers\PdfImageHandler';
-                break;
-
-                case 'tif':
-                    $class = 'CubeUpload\Handlers\TifImageHandler';
-                break;
-
-                default:
-                    throw new \Exception( "File extension {$extn} not supported");
-                break;
-            }
-
-            if( class_exists($class))
-            {
+                $class = self::$handlers[$extn];
                 $this->handler = new $class();
             }
-            else
-                throw new \Exception( "Image handler class " . $class . " not found");
+            else {
+                throw new \Exception( "File extension {$extn} not supported");
+            }
         }
         
         public function getHandler()
@@ -89,5 +69,10 @@
             $valid = $this->handler->valid();
             $this->handler->close(); 
             return $valid;
+        }
+
+        public function process()
+        {
+
         }
     }
