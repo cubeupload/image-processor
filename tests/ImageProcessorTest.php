@@ -92,4 +92,11 @@
             if( $p->isValid() )
                 $p->process();
         }
+        
+        public function testLoadingFromConstruct()
+        {
+            $p = new ImageProcessor( $this->png64x48 );
+            
+            $this->assertTrue( $p->isValid() );
+        }
     }

@@ -9,8 +9,10 @@ When we receive uploaded images, we need to make sure that someone's image named
 ## Intended Usage (eventually)
 
 ```php
-$processor = new CubeUpload\ImageProcessor;
+$processor = new CubeUpload\ImageProcessor\ImageProcessor;
 $processor->load( "image.png" );
+// or
+$processor->loadFromUpload( $uploadedFile ); // $uploadedFile is an instance of the Symfony UploadedFile class
 
 if( $processor->isValid() )
   sendToStore( $processor->getSplFileInfo()->getPathname() );

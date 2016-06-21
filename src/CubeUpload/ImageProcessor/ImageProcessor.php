@@ -17,6 +17,12 @@
             'pdf'   => 'CubeUpload\ImageProcessor\Handlers\PdfImageHandler'
         ]; 
 
+        public function __construct( $path = null )
+        {
+            if( $path != null)
+                $this->load( $path );
+        }
+
         public function load($path)
         {
             if( file_exists( $path ) )
